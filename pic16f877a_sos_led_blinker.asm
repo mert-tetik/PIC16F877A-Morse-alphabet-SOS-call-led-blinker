@@ -1,9 +1,6 @@
-list		p=16f877A	; List Directive To Define Processor
-#include	"p16f877A.inc"	; Processor Specific Variable Definitions
+#include	"p16f877A.inc"	
+; Processor Specific Variable Definitions
 __CONFIG _CP_OFF & _WDT_OFF & _LVP_ON & _FOSC_XT & _PWRTE_ON & _CPD_OFF & _WRT_OFF
-
-;TIME1 EQU 0x10
-;TIME2 EQU 0x11
 
 ;OUTPUT PIN = RB5
 
@@ -16,11 +13,11 @@ INIT
     movlw 0xDF ;11011111
     movwf TRISB ;RB5 Output
     bcf STATUS, RP0 ;bank 0 
-    movlw 0x04 ;4
+    movlw 0x04 
     movwf 12;Count Fast Blinks
-    movlw 0x04;4
+    movlw 0x04
     movwf 13;Count Slow Blinks
-    movlw 0x08;8
+    movlw 0x08
     movwf 14;Count All Blinks
 LOOP;Fast Blinks
     decfsz 14
@@ -98,5 +95,4 @@ DELAY
     goto DELAY
     RETLW 0x00
    
-    
 END
